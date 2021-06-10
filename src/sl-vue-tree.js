@@ -417,7 +417,7 @@ export default {
     },
 
     getNodeEl(path) {
-      this.getRoot().$el.querySelector(`[path="${JSON.stringify(path)}"]`);
+      return this.getRoot().$el.querySelector(`[path="${JSON.stringify(path)}"]`);
     },
 
     getLastNode() {
