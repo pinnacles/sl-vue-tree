@@ -1,3 +1,4 @@
+const clone = require("rfdc/default")
 
 export default {
   name: 'sl-vue-tree',
@@ -770,7 +771,7 @@ export default {
     },
 
     copy(entity) {
-      return JSON.parse(JSON.stringify(entity));
+      return clone(entity);
     }
 
   }
