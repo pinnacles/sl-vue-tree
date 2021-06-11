@@ -182,7 +182,8 @@ export default {
         level: path.length,
         ind,
         isFirstChild: ind == 0,
-        isLastChild: ind === siblings.length - 1
+        isLastChild: ind === siblings.length - 1,
+        customClass: nodeModel.customClass
       };
       return node;
     },

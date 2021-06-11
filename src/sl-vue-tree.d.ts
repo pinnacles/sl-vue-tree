@@ -18,6 +18,7 @@ export interface ISlTreeNode<TDataType> extends ISlTreeNodeModel<TDataType> {
     path: number[];
     pathStr: string;
     children: ISlTreeNode<TDataType>[];
+    customClass: string;
 }
 export interface ICursorPosition<TDataType> {
     node: ISlTreeNode<TDataType>;
