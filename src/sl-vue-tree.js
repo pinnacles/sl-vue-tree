@@ -274,6 +274,9 @@ export default {
           }
           if (shiftSelectionStarted) nodeModel.isSelected = node.isSelectable;
         } else if (node.pathStr === selectedNode.pathStr) {
+          if (node.isSelected || (!node.isSelected && !node.isExpanded)) {
+            nodeModel.isExpanded = !node.isExpanded;
+          }
           nodeModel.isSelected = node.isSelectable;
         } else if (!addToSelection) {
           if (nodeModel.isSelected) nodeModel.isSelected = false;
