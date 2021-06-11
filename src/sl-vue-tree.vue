@@ -9,7 +9,11 @@
     <div ref="nodes" class="sl-vue-tree-nodes-list">
       <div
           class="sl-vue-tree-node" v-for="(node, nodeInd) in nodes"
-          :class="[{'sl-vue-tree-selected': node.isSelected }, node.customClass] "
+          :class="[{
+            'sl-vue-tree-selected': node.isSelected,
+            'sl-vue-tree-node_first': node.isFirstChild,
+            'sl-vue-tree-node_last': node.isLastChild
+          }, node.customClass]"
       >
         <div
           class="sl-vue-tree-cursor sl-vue-tree-cursor_before"
