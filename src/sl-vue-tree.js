@@ -282,6 +282,8 @@ export default {
             nodeModel.isExpanded = !node.isExpanded;
           }
           nodeModel.isSelected = node.isSelectable;
+        } else if (this.selectedWithExpanded && (!node.isExpanded && selectedNode.pathStr.indexOf(node.pathStr.slice(0, -1)) > -1)) {
+          nodeModel.isExpanded = true;
         } else if (!addToSelection) {
           if (nodeModel.isSelected) nodeModel.isSelected = false;
         }
