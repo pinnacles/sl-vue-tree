@@ -278,12 +278,10 @@ export default {
           }
           if (shiftSelectionStarted) nodeModel.isSelected = node.isSelectable;
         } else if (node.pathStr === selectedNode.pathStr) {
-          if (this.selectedWithExpanded && (node.isSelected || (!node.isSelected && !node.isExpanded))) {
-            nodeModel.isExpanded = !node.isExpanded;
-          }
           nodeModel.isSelected = node.isSelectable;
         } else if (this.selectedWithExpanded && (!node.isExpanded && selectedNode.pathStr.indexOf(node.pathStr.slice(0, -1)) > -1)) {
           nodeModel.isExpanded = true;
+          nodeModel.isSelected = false;
         } else if (!addToSelection) {
           if (nodeModel.isSelected) nodeModel.isSelected = false;
         }
