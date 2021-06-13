@@ -48,6 +48,10 @@ export default {
     maxScrollSpeed: {
       type: Number,
       default: 20
+    },
+    selectedWithExpanded: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -276,6 +280,9 @@ export default {
           if (shiftSelectionStarted) nodeModel.isSelected = node.isSelectable;
         } else if (node.pathStr === selectedNode.pathStr) {
           nodeModel.isSelected = node.isSelectable;
+        } else if (this.selectedWithExpanded && (!node.isExpanded && selectedNode.pathStr.indexOf(node.pathStr.slice(0, -1)) > -1)) {
+          nodeModel.isExpanded = true;
+          nodeModel.isSelected = false;
         } else if (!addToSelection) {
           if (nodeModel.isSelected) nodeModel.isSelected = false;
         }
