@@ -48,6 +48,10 @@ export default {
     maxScrollSpeed: {
       type: Number,
       default: 20
+    },
+    dragInfoStyle: {
+      type: Object,
+      default: null
     }
   },
 
@@ -317,7 +321,7 @@ export default {
       const $root = this.getRoot().$el;
       const rootRect = $root.getBoundingClientRect();
       const $dragInfo = this.$refs.dragInfo;
-      const dragInfoTop = (event.clientY - rootRect.top + $root.scrollTop - ($dragInfo.style.marginBottom | 0) );
+      const dragInfoTop = (event.clientY - rootRect.top + $root.scrollTop - (parseInt($dragInfo.style.marginBottom) | 0) );
       const dragInfoLeft = (event.clientX - rootRect.left + $root.scrollLeft);
 
       $dragInfo.style.top = dragInfoTop + 'px';
