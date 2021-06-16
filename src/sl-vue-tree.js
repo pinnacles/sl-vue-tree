@@ -327,7 +327,7 @@ export default {
       const rootRect = $root.getBoundingClientRect();
       const $dragInfo = this.$refs.dragInfo;
       const dragInfoTop = (event.clientY - rootRect.top + $root.scrollTop - ($dragInfo.style.marginBottom | 0) );
-      const dragInfoLeft = (event.clientX - rootRect.left);
+      const dragInfoLeft = (event.clientX - rootRect.left + $root.scrollLeft);
 
       $dragInfo.style.top = dragInfoTop + 'px';
       $dragInfo.style.left = dragInfoLeft + 'px';
