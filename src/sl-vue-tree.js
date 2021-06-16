@@ -52,6 +52,10 @@ export default {
     dragInfoStyle: {
       type: Object,
       default: null
+    },
+    zoomRatio: {
+      type: Number,
+      default: 1
     }
   },
 
@@ -321,8 +325,8 @@ export default {
       const $root = this.getRoot().$el;
       const rootRect = $root.getBoundingClientRect();
       const $dragInfo = this.$refs.dragInfo;
-      const dragInfoTop = (event.clientY - rootRect.top + $root.scrollTop - (parseInt($dragInfo.style.marginBottom) | 0) );
-      const dragInfoLeft = (event.clientX - rootRect.left + $root.scrollLeft);
+      const dragInfoTop = ((event.clientY - rootRect.top) * this.zoomRatio + $root.scrollTop - (parseInt($dragInfo.style.marginBottom) | 0) );
+      const dragInfoLeft = ((event.clientX - rootRect.left) * this.zoomRatio + $root.scrollLeft);
 
       $dragInfo.style.top = dragInfoTop + 'px';
       $dragInfo.style.left = dragInfoLeft + 'px';
