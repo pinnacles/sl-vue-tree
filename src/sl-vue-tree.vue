@@ -8,7 +8,9 @@
   >
     <div ref="nodes" class="sl-vue-tree-nodes-list">
       <div
-          class="sl-vue-tree-node" v-for="(node, nodeInd) in nodes"
+          class="sl-vue-tree-node"
+          v-for="(node, nodeInd) in nodes"
+          :key="nodeInd"
           :class="{
             'sl-vue-tree-selected': node.isSelected,
             'sl-vue-tree-node_first': node.isFirstChild,
@@ -53,7 +55,7 @@
             'sl-vue-tree-node-is-folder' : !node.isLeaf
           }"
         >
-          <div class="sl-vue-tree-gap" v-for="gapInd in gaps"></div>
+          <div class="sl-vue-tree-gap" v-for="(gapInd, i) in gaps" :key="i"></div>
 
           <div class="sl-vue-tree-branch" v-if="level && showBranches">
             <slot name="branch" :node="node">
@@ -99,11 +101,11 @@
             :showBranches="showBranches"
             @dragover.prevent
         >
-          <template slot="title" slot-scope="{ node }">
+          <template v-slot:title="{ node }">
             <slot name="title" :node="node">{{ node.title }}</slot>
           </template>
 
-          <template slot="toggle" slot-scope="{ node }">
+          <template v-slot:toggle="{ node }">
             <slot name="toggle" :node="node">
             <span>
                {{ !node.isLeaf ? (node.isExpanded ? '-' : '+') : '' }}
@@ -111,11 +113,11 @@
             </slot>
           </template>
 
-          <template slot="sidebar" slot-scope="{ node }">
+          <template v-slot:sidebar="{ node }">
             <slot name="sidebar" :node="node"></slot>
           </template>
 
-          <template slot="empty-node" slot-scope="{ node }">
+          <template v-slot:empty-node="{ node }">
             <slot name="empty-node" :node="node" v-if="!node.isLeaf && node.children.length == 0 && node.isExpanded">
             </slot>
           </template>
