@@ -24,7 +24,8 @@
   <div class="row">
     <div class="tree-container">
       <sl-vue-tree
-          v-model="nodes"
+          :value="nodes"
+          @input="(v) => nodes = v"
           ref="slVueTree"
           :allow-multiselect="true"
           @select="nodeSelected"
