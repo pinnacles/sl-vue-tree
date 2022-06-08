@@ -4,11 +4,12 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   entry: {
-    'SlVueTree': './src/sl-vue-tree.vue'
+    'dist/sl-vue-tree': './src/sl-vue-tree.vue',
+    'demo/demo': './src/demo.js'
   },
   output: {
-    path: __dirname + '/dist',
-    filename: 'sl-vue-tree.js',
+    path: __dirname,
+    filename: '[name].js',
     library: 'SlVueTree',
     libraryTarget: 'umd',
     libraryExport: 'default'
@@ -68,8 +69,8 @@ module.exports = {
 
   plugins: [
     new CopyWebpackPlugin([
-      { from: 'src/*.css', to: '[name].css'},
-      { from: 'src/*.d.ts', to: '[name].ts'}
+      { from: 'src/*.css', to: 'dist/[name].css'},
+      { from: 'src/*.d.ts', to: 'dist/[name].ts'}
     ]),
     new VueLoaderPlugin(),
   ]
