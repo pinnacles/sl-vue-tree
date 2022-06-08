@@ -84,7 +84,7 @@ export default {
     }
   },
 
-  beforeDestroy() {
+  beforeUnmount() {
     document.removeEventListener('mouseup', this.onDocumentMouseupHandler);
   },
 
